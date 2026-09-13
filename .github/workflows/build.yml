@@ -1,0 +1,46 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: 'gradle'
+    
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+    
+    - uses: gradle/actions/setup-gradle@v3
+    
+    - name: Build Debug APK
+      run: ./gradlew assembleDebug
+    
+    - name: Upload Debug APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: ytclip-debug
+        path: app/build/outputs/apk/debug/*.apk
+        retention-days: 30
+    
+    - name: Create Release (on push to main)
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ github.run_number }}
+        name: ytclip ${{ github.run_number }}
+        files: app/build/outputs/apk/debug/*.apk
+        generate_release_notes: true
