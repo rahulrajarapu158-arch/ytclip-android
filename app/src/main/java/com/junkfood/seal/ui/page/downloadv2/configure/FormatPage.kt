@@ -280,6 +280,17 @@ fun FormatPagePreview() {
     }
 }
 
+private fun getLabel(h: Int): String = when {
+    h >= 2160 -> "4K"
+    h >= 1440 -> "2K"
+    h >= 1080 -> "1080p"
+    h >= 720 -> "720p"
+    h >= 480 -> "480p"
+    else -> h.toString() + "p"
+}
+
+private data class CombinedFormat(val videoFormat: Format, val audioFormat: Format, val label: String, val height: Int)
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun FormatPageImpl(
@@ -302,6 +313,16 @@ private fun FormatPageImpl(
     val videoAudioFormats =
         videoInfo.formats.filter { it.acodec != "none" && it.vcodec != "none" }.reversed()
 
+    val combinedFormats = mutableListOf<CombinedFormat>()
+    val videoByHeight = videoOnlyFormats.groupBy { it.height?.toInt() ?: 0 }.toList().sortedByDescending { it.first }.toMap()
+    val bestAudio = audioOnlyFormats.firstOrNull()
+    for ((height, videos) in videoByHeight) {
+        val bestVideo = videos.firstOrNull()
+        if (bestVideo != null && bestAudio != null) {
+            combinedFormats.add(CombinedFormat(bestVideo, bestAudio, getLabel(height), height))
+        }
+    }
+
     val duration = videoInfo.duration ?: 0.0
 
     var videoOnlyItemLimit by remember { mutableIntStateOf(6) }
@@ -316,6 +337,7 @@ private fun FormatPageImpl(
     var selectedVideoAudioFormat by remember { mutableIntStateOf(NOT_SELECTED) }
     var selectedVideoOnlyFormat by remember { mutableIntStateOf(NOT_SELECTED) }
     val selectedAudioOnlyFormats = remember { mutableStateListOf<Int>() }
+    var selectedCombinedIndex by remember { mutableIntStateOf(if (combinedFormats.isNotEmpty()) 0 else NOT_SELECTED) }
     val context = LocalContext.current
 
     val uriHandler = LocalUriHandler.current
@@ -371,6 +393,10 @@ private fun FormatPageImpl(
                         ?: videoInfo.requestedDownloads?.forEach {
                             it.requestedFormats?.let { addAll(it) }
                         }
+                } else if (selectedCombinedIndex != NOT_SELECTED && selectedCombinedIndex < combinedFormats.size) {
+                    val combined = combinedFormats[selectedCombinedIndex]
+                    add(combined.videoFormat)
+                    add(combined.audioFormat)
                 } else {
                     selectedAudioOnlyFormats.forEach { index ->
                         add(audioOnlyFormats.elementAt(index))
@@ -576,6 +602,64 @@ private fun FormatPageImpl(
                 }
             }
 
+            // Combined formats section (video + audio merged)
+            if (combinedFormats.isNotEmpty()) {
+                item(span = { GridItemSpan(maxLineSpan) }) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier =
+                            Modifier.padding(top = 12.dp, bottom = 4.dp).padding(horizontal = 12.dp),
+                    ) {
+                        FormatSubtitle(text = "Quality (Video + Audio)")
+                    }
+                }
+                item(span = { GridItemSpan(maxLineSpan) }) {
+                    val primaryColor = MaterialTheme.colorScheme.primary
+                    val surfaceVariant = MaterialTheme.colorScheme.surfaceVariant
+                    val primaryContainer = MaterialTheme.colorScheme.primaryContainer
+                    val onSurfaceVariant = MaterialTheme.colorScheme.onSurfaceVariant
+                    val shapes = MaterialTheme.shapes
+                    LazyRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        contentPadding = PaddingValues(horizontal = 8.dp),
+                    ) {
+                        items(count = combinedFormats.size) { index ->
+                            val combined = combinedFormats[index]
+                            val isSelected = selectedCombinedIndex == index
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                modifier = Modifier
+                                    .clip(shapes.medium)
+                                    .clickable {
+                                        selectedCombinedIndex = if (selectedCombinedIndex == index) NOT_SELECTED else index
+                                        isSuggestedFormatSelected = false
+                                        selectedAudioOnlyFormats.clear()
+                                        selectedVideoOnlyFormat = NOT_SELECTED
+                                        selectedVideoAudioFormat = NOT_SELECTED
+                                    }
+                                    .background(
+                                        if (isSelected) primaryContainer
+                                        else surfaceVariant
+                                    )
+                                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                            ) {
+                                Text(
+                                    text = combined.label,
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = if (isSelected) primaryColor
+                                            else onSurfaceVariant,
+                                )
+                                Text(
+                                    text = combined.height.toString() + "p",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = onSurfaceVariant,
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
             if (isSuggestedFormatAvailable) {
                 item(span = { GridItemSpan(maxLineSpan) }) {
                     Row(
@@ -592,6 +676,7 @@ private fun FormatPageImpl(
                         selectedAudioOnlyFormats.clear()
                         selectedVideoAudioFormat = NOT_SELECTED
                         selectedVideoOnlyFormat = NOT_SELECTED
+                        selectedCombinedIndex = NOT_SELECTED
                     }
 
                     Row(
@@ -651,6 +736,7 @@ private fun FormatPageImpl(
                             selectedAudioOnlyFormats.clear()
                         }
                         isSuggestedFormatSelected = false
+                        selectedCombinedIndex = NOT_SELECTED
                         selectedAudioOnlyFormats.add(index)
                     }
                 }
@@ -695,6 +781,7 @@ private fun FormatPageImpl(
                             else {
                                 selectedVideoAudioFormat = NOT_SELECTED
                                 isSuggestedFormatSelected = false
+                                selectedCombinedIndex = NOT_SELECTED
                                 index
                             }
                     }
@@ -734,6 +821,7 @@ private fun FormatPageImpl(
                                 selectedAudioOnlyFormats.clear()
                                 selectedVideoOnlyFormat = NOT_SELECTED
                                 isSuggestedFormatSelected = false
+                                selectedCombinedIndex = NOT_SELECTED
                                 index
                             }
                     }
@@ -1048,11 +1136,11 @@ fun UpdateSubtitleLanguageDialog(
             Column {
                 Text(text = stringResource(R.string.update_language_msg))
 
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
                 FlowRow(
                     horizontalArrangement = Arrangement.spacedBy(20.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalArrangement = Arrangement.spacedBy(20.dp),
                 ) {
                     languages.forEach {
                         Row(modifier = Modifier, verticalAlignment = Alignment.CenterVertically) {
