@@ -3,8 +3,6 @@ name: Build APK
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -29,18 +27,39 @@ jobs:
     - name: Build Debug APK
       run: ./gradlew assembleDebug
     
-    - name: Upload Debug APK
+    - name: Upload ARM64 APK
       uses: actions/upload-artifact@v4
       with:
-        name: ytclip-debug
-        path: app/build/outputs/apk/debug/*.apk
+        name: ytclip-arm64
+        path: app/build/outputs/apk/generic/debug/*-arm64-v8a-debug.apk
         retention-days: 30
     
-    - name: Create Release (on push to main)
+    - name: Create Release
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       uses: softprops/action-gh-release@v1
       with:
         tag_name: v${{ github.run_number }}
         name: ytclip ${{ github.run_number }}
-        files: app/build/outputs/apk/debug/*.apk
-        generate_release_notes: true
+        body: |
+          ## ytclip Android APK
+          
+          ### Download
+          - **arm64-v8a** (63MB) — Most modern phones (2018+)
+          - **universal** (160MB) — All phones
+          
+          ### Install
+          1. Download the APK
+          2. Open file manager
+          3. Tap the APK
+          4. Allow "Install from unknown sources" if prompted
+          5. Done
+          
+          ### Features
+          - Clip YouTube videos by timestamps
+          - Download transcripts (SRT/VTT)
+          - Multiple quality options
+          - No watermark, no signup, no limits
+        files: |
+          app/build/outputs/apk/generic/debug/*-arm64-v8a-debug.apk
+          app/build/outputs/apk/generic/debug/*-universal-debug.apk
+        generate_release_notes: false
