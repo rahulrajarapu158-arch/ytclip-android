@@ -54,6 +54,10 @@ jobs:
           4. Allow "Install from unknown sources" if prompted
           5. Done
           
+          ### First Launch
+          - Go to Settings → yt-dlp → **Update yt-dlp** (important!)
+          - This fixes YouTube "Precondition check failed" errors
+          
           ### Features
           - Clip YouTube videos by timestamps
           - Download transcripts (SRT/VTT)
