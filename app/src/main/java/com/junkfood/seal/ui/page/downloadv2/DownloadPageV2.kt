@@ -213,6 +213,10 @@ fun DownloadPageV2(
             view.slightHapticFeedback()
             dialogViewModel.postAction(Action.ShowSheet())
         },
+        clipCallback = {
+            view.slightHapticFeedback()
+            dialogViewModel.postAction(Action.ShowSheet())
+        },
         onMenuOpen = onMenuOpen,
     ) { task, action ->
         view.slightHapticFeedback()
@@ -318,6 +322,7 @@ fun DownloadPageImplV2(
     modifier: Modifier = Modifier,
     taskDownloadStateMap: SnapshotStateMap<Task, Task.State>,
     downloadCallback: () -> Unit = {},
+    clipCallback: () -> Unit = {},
     onMenuOpen: (() -> Unit) = {},
     onActionPost: (Task, UiAction) -> Unit,
 ) {
@@ -351,7 +356,23 @@ fun DownloadPageImplV2(
     Scaffold(
         modifier = modifier.fillMaxSize().statusBarsPadding(),
         containerColor = MaterialTheme.colorScheme.surface,
-        floatingActionButton = { FABs(modifier = Modifier, downloadCallback = downloadCallback) },
+        floatingActionButton = {
+            Column(modifier = Modifier.padding(6.dp), horizontalAlignment = Alignment.End) {
+                FloatingActionButton(
+                    onClick = clipCallback,
+                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                    content = {
+                        Icon(
+                            Icons.Outlined.ContentCut,
+                            contentDescription = "Clip Video",
+                        )
+                    },
+                    modifier = Modifier.padding(vertical = 12.dp),
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                FABs(modifier = Modifier, downloadCallback = downloadCallback)
+            }
+        },
     ) { windowInsetsPadding ->
         val lazyListState = rememberLazyGridState()
         val windowWidthSizeClass = LocalWindowWidthState.current
@@ -583,7 +604,7 @@ private fun HeaderExpanded(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun FABs(modifier: Modifier = Modifier, downloadCallback: () -> Unit = {}) {
+fun FABs(modifier: Modifier = Modifier, downloadCallback: () -> Unit = {}, clipCallback: () -> Unit = {}) {
     val expanded = LocalWindowWidthState.current != WindowWidthSizeClass.Compact
     Column(modifier = modifier.padding(6.dp), horizontalAlignment = Alignment.End) {
         FloatingActionButton(
