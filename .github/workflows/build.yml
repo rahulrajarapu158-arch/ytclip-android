@@ -41,8 +41,8 @@ jobs:
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: v1.3.0
-        name: ytclip v1.3.0
+        tag_name: v1.3.1
+        name: ytclip v1.3.1
         body: |
           ## ytclip Android APK
           
