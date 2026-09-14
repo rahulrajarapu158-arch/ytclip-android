@@ -114,7 +114,6 @@ import com.junkfood.seal.ui.page.downloadv2.configure.Config
 import com.junkfood.seal.ui.page.downloadv2.configure.DownloadDialog
 import com.junkfood.seal.ui.page.downloadv2.configure.DownloadDialogViewModel
 import com.junkfood.seal.ui.page.downloadv2.configure.FormatPage
-import com.junkfood.seal.util.makeToast
 import com.junkfood.seal.ui.page.downloadv2.configure.PlaylistSelectionPage
 import com.junkfood.seal.ui.page.downloadv2.configure.PreferencesMock
 import com.junkfood.seal.ui.svg.DynamicColorImageVectors
@@ -124,7 +123,6 @@ import com.junkfood.seal.util.DownloadUtil
 import com.junkfood.seal.util.FileUtil
 import com.junkfood.seal.util.VideoInfo
 import com.junkfood.seal.util.getErrorReport
-import com.junkfood.seal.util.makeToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

@@ -84,10 +84,7 @@ fun DownloadsFileManager(
                         file = file,
                         context = context,
                         onOpen = {
-                            val intent = FileUtil.createIntentForOpeningFile(file.absolutePath)
-                            if (intent != null) {
-                                context.startActivity(intent)
-                            } else {
+                            FileUtil.openFile(file.absolutePath) { _ ->
                                 Toast.makeText(context, "File unavailable", Toast.LENGTH_SHORT).show()
                             }
                         },
