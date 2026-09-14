@@ -2,6 +2,7 @@ package com.junkfood.seal.ui.page.downloadv2
 
 import android.content.Intent
 import android.os.Environment
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -87,7 +88,7 @@ fun DownloadsFileManager(
                             if (intent != null) {
                                 context.startActivity(intent)
                             } else {
-                                context.makeToast("File unavailable")
+                                Toast.makeText(context, "File unavailable", Toast.LENGTH_SHORT).show()
                             }
                         },
                         onShare = {
