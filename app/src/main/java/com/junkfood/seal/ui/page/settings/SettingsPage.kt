@@ -167,7 +167,7 @@ fun SettingsPage(onNavigateBack: () -> Unit, onNavigateTo: (String) -> Unit) {
                 SettingItem(
                     title = stringResource(id = R.string.download_directory),
                     description = stringResource(id = R.string.download_directory_desc),
-                    icon = Icons.Rounded.Folder,
+                    icon = Icons.Outlined.Folder,
                 ) {
                     onNavigateTo(Route.DOWNLOAD_DIRECTORY)
                 }

@@ -267,7 +267,7 @@ fun NavigationDrawerSheetContent(
 
                 NavigationDrawerItem(
                     label = { Text(stringResource(R.string.download_directory)) },
-                    icon = { Icon(Icons.Rounded.Folder, null) },
+                    icon = { Icon(Icons.Outlined.Folder, null) },
                     onClick = {
                         scope
                             .launch { onDismissRequest() }
@@ -385,8 +385,7 @@ fun NavigationRailContent(
         NavigationRailItemVariant(
             icon = {
                 Icon(
-                    if (currentTopDestination == Route.FILE_MANAGER) Icons.Filled.Folder
-                    else Icons.Outlined.Folder,
+                    Icons.Outlined.Folder,
                     "Files",
                 )
             },
