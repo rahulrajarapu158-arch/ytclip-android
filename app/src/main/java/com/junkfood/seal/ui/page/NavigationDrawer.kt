@@ -29,7 +29,7 @@ import androidx.compose.material.icons.outlined.Terminal
 import androidx.compose.material.icons.outlined.VolunteerActivism
 import androidx.compose.material.icons.rounded.BugReport
 import androidx.compose.material.icons.rounded.Cookie
-import androidx.compose.material.icons.rounded.Folder
+import androidx.compose.material.icons.outlined.Folder
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.SettingsApplications
 import androidx.compose.material3.DrawerState

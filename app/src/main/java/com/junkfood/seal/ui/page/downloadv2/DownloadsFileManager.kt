@@ -82,7 +82,7 @@ fun DownloadsFileManager(
                     FileItem(
                         file = file,
                         context = context,
-                        onOpen = { FileUtil.openFile(file.absolutePath) },
+                        onOpen = { FileUtil.openFile(file.absolutePath) { context.makeToast("File unavailable") } },
                         onShare = {
                             FileUtil.createIntentForSharingFile(file.absolutePath)?.let {
                                 context.startActivity(Intent.createChooser(it, "Share"))
