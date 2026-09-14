@@ -41,8 +41,8 @@ jobs:
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: v1.2.1
-        name: ytclip v1.2.1
+        tag_name: v1.3.0
+        name: ytclip v1.3.0
         body: |
           ## ytclip Android APK
           
@@ -61,12 +61,14 @@ jobs:
           - Go to Settings → yt-dlp → **Update yt-dlp** (important!)
           - This fixes YouTube "Precondition check failed" errors
           
-          ### What's new (v1.2.1)
+          ### What's new (v1.3.0)
+          - **Clip FAB**: Scissors icon on home screen for quick clipping
+          - **Downloads file manager**: Browse, play, share, delete files
           - **Cleaner format selector**: Combined quality (4K/2K/1080p/720p/480p) shown by default
           - **Advanced toggle**: Audio only / Video only hidden behind expandable section
           - **Fixed**: App name shows "ytclip" (not "Seal Debug")
           - **Fixed**: No paywall — all quality free
-          - **Fixed**: Version shows 1.1.0 (not 2.0.0-alpha.5-debug)
+          - **Fixed**: Sponsor button redirects to ytclip (not JunkFood02)
 
           ### Features
           - Clip YouTube videos by timestamps
