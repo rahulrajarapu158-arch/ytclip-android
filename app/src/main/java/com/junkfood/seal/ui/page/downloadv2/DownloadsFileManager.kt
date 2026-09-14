@@ -16,7 +16,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.junkfood.seal.util.FileUtil
-import com.junkfood.seal.util.makeToast
 import com.junkfood.seal.util.toFileSizeText
 import java.io.File
 
@@ -88,7 +87,7 @@ fun DownloadsFileManager(
                             if (intent != null) {
                                 context.startActivity(intent)
                             } else {
-                                makeToast("File unavailable")
+                                context.makeToast("File unavailable")
                             }
                         },
                         onShare = {
