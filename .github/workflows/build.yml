@@ -24,14 +24,14 @@ jobs:
     
     - uses: gradle/actions/setup-gradle@v3
     
-    - name: Build Release APK
-      run: ./gradlew assembleRelease
+    - name: Build Debug APK
+      run: ./gradlew assembleDebug
     
     - name: Upload ARM64 APK
       uses: actions/upload-artifact@v4
       with:
         name: ytclip-arm64
-        path: app/build/outputs/apk/generic/release/*-arm64-v8a-release.apk
+        path: app/build/outputs/apk/generic/debug/*-arm64-v8a-debug.apk
         retention-days: 30
     
     - name: Create Release
@@ -64,6 +64,6 @@ jobs:
           - Multiple quality options
           - No watermark, no signup, no limits
         files: |
-          app/build/outputs/apk/generic/release/*-arm64-v8a-release.apk
-          app/build/outputs/apk/generic/release/*-universal-release.apk
+          app/build/outputs/apk/generic/debug/*-arm64-v8a-debug.apk
+          app/build/outputs/apk/generic/debug/*-universal-debug.apk
         generate_release_notes: false

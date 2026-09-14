@@ -47,7 +47,7 @@ android {
         applicationId = "com.rahulrajarapu158arch.ytclip"
         minSdk = 24
         targetSdk = 35
-        versionCode = 200_000_150
+        versionCode = 101_000_400
         check(versionCode == currentVersionCode)
 
         versionName = baseVersionName
