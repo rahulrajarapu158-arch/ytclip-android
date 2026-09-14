@@ -218,6 +218,7 @@ private val BooleanPreferenceDefaults =
         NOTIFICATION to true,
         EMBED_METADATA to true,
         USE_CUSTOM_AUDIO_PRESET to false,
+        AUTO_UPDATE to true,
     )
 
 private val IntPreferenceDefaults =
@@ -309,7 +310,6 @@ object PreferenceUtil {
     fun isAutoUpdateEnabled(): Boolean {
         return when {
             isFDroidBuild() -> false
-            isDebugBuild() -> false
             else -> AUTO_UPDATE.getBoolean()
         }
     }
