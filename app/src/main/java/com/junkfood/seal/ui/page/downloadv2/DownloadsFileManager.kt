@@ -43,6 +43,7 @@ fun DownloadsFileManager(
 
     Scaffold(
         topBar = {
+            @OptIn(ExperimentalMaterial3Api::class)
             TopAppBar(
                 title = { Text("Downloads") },
                 navigationIcon = {
@@ -82,7 +83,7 @@ fun DownloadsFileManager(
                     FileItem(
                         file = file,
                         context = context,
-                        onOpen = { FileUtil.openFile(file.absolutePath) { _ -> makeToast("File unavailable") } },
+                        onOpen = { FileUtil.openFile(file.absolutePath) { makeToast("File unavailable") } },
                         onShare = {
                             FileUtil.createIntentForSharingFile(file.absolutePath)?.let {
                                 context.startActivity(Intent.createChooser(it, "Share"))
