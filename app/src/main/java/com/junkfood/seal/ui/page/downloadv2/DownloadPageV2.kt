@@ -91,7 +91,9 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.junkfood.seal.R
 import com.junkfood.seal.download.DownloaderV2
-import com.junkfood.seal.download.Task
+import com.junkfood.seal.download.TaskFactory
+import com.junkfood.seal.util.DownloadUtil
+import com.junkfood.seal.util.VideoClip
 import com.junkfood.seal.download.Task.DownloadState.Canceled
 import com.junkfood.seal.download.Task.DownloadState.Completed
 import com.junkfood.seal.download.Task.DownloadState.Error
@@ -112,6 +114,7 @@ import com.junkfood.seal.ui.page.downloadv2.configure.Config
 import com.junkfood.seal.ui.page.downloadv2.configure.DownloadDialog
 import com.junkfood.seal.ui.page.downloadv2.configure.DownloadDialogViewModel
 import com.junkfood.seal.ui.page.downloadv2.configure.FormatPage
+import com.junkfood.seal.util.makeToast
 import com.junkfood.seal.ui.page.downloadv2.configure.PlaylistSelectionPage
 import com.junkfood.seal.ui.page.downloadv2.configure.PreferencesMock
 import com.junkfood.seal.ui.svg.DynamicColorImageVectors
@@ -206,6 +209,7 @@ fun DownloadPageV2(
     val scope = rememberCoroutineScope()
     val clipboardManager = LocalClipboardManager.current
     val uriHandler = LocalUriHandler.current
+    var showClipDialog by remember { mutableStateOf(false) }
 
     DownloadPageImplV2(
         modifier = modifier,
@@ -216,7 +220,7 @@ fun DownloadPageV2(
         },
         clipCallback = {
             view.slightHapticFeedback()
-            dialogViewModel.postAction(Action.ShowSheet())
+            showClipDialog = true
         },
         onMenuOpen = onMenuOpen,
     ) { task, action ->
@@ -300,6 +304,38 @@ fun DownloadPageV2(
         }
 
         DownloadDialogViewModel.SelectionState.Idle -> {}
+    }
+
+    if (showClipDialog) {
+        ClipDialog(
+            onDismissRequest = { showClipDialog = false },
+            onDownloadClip = { url, startSec, endSec ->
+                showClipDialog = false
+                // Fetch video info first, then create clip task
+                scope.launch(Dispatchers.IO) {
+                    runCatching {
+                        val info = DownloadUtil.fetchVideoInfoFromUrl(url)
+                        info.onSuccess { videoInfo ->
+                            val clip = VideoClip(startSec, endSec)
+                            val task = TaskFactory.createWithConfigurations(
+                                videoInfo = videoInfo,
+                                formatList = emptyList(),
+                                videoClips = listOf(clip),
+                                splitByChapter = false,
+                                newTitle = "",
+                                selectedSubtitles = emptyList(),
+                                selectedAutoCaptions = emptyList(),
+                            )
+                            downloader.enqueue(task)
+                        }.onFailure {
+                            context.makeToast("Failed to fetch video info")
+                        }
+                    }.onFailure {
+                        context.makeToast("Failed to start clip download")
+                    }
+                }
+            }
+        )
     }
 }
 
