@@ -86,7 +86,7 @@ fun SponsorItem(
 fun SponsorItemPreview() {
     SponsorItem(
         userName = "junkfood",
-        userLogin = "JunkFood02",
+        userLogin = "rahulrajarapu158-arch",
         avatarUrl = R.drawable.sample1,
         profileUrl = "",
     ) {}

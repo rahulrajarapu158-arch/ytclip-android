@@ -70,7 +70,7 @@ fun TroubleShootingPage(
                         modifier = Modifier,
                         text = stringResource(R.string.issue_tracker_hint),
                     )
-                    val knownIssueUrlytclip = "https://github.com/JunkFood02/ytclip/issues/1399"
+                    val knownIssueUrlytclip = "https://github.com/rahulrajarapu158-arch/ytclip-android/issues/1399"
                     PreferenceItem(
                         title = "ytclip Issue Tracker",
                         description = null,
