@@ -64,10 +64,10 @@ import com.junkfood.seal.download.Task.DownloadState.Running
 import com.junkfood.seal.ui.common.LocalFixedColorRoles
 import com.junkfood.seal.ui.component.ActionSheetItem
 import com.junkfood.seal.ui.component.ActionSheetPrimaryButton
-import com.junkfood.seal.ui.component.SealModalBottomSheet
+import com.junkfood.seal.ui.component.ytclipModalBottomSheet
 import com.junkfood.seal.ui.page.downloadv2.configure.PreferencesMock
 import com.junkfood.seal.ui.theme.ErrorTonalPalettes
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 import com.junkfood.seal.util.Format
 import com.junkfood.seal.util.toBitrateText
 import com.junkfood.seal.util.toDurationText
@@ -409,9 +409,9 @@ private fun SheetPreview() {
             audioOnlyFormats = listOf(Format(acodec = "mp4a", abr = 129.0, fileSize = 114514.0)),
         )
 
-    SealTheme {
+    ytclipTheme {
         Surface() {
-            SealModalBottomSheet(
+            ytclipModalBottomSheet(
                 contentPadding = PaddingValues(),
                 onDismissRequest = {},
                 sheetState = sheetState,

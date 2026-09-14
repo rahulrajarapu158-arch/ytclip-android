@@ -39,7 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import com.junkfood.seal.R
 import com.junkfood.seal.ui.theme.FixedAccentColors
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 
 private val DialogVerticalPadding = PaddingValues(vertical = 24.dp)
 private val IconPadding = PaddingValues(bottom = 16.dp)
@@ -70,7 +70,7 @@ fun HelpDialog(
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
-fun SealDialog(
+fun ytclipDialog(
     modifier: Modifier = Modifier,
     onDismissRequest: () -> Unit,
     confirmButton: @Composable (() -> Unit)?,
@@ -165,7 +165,7 @@ fun SealDialog(
 }
 
 @Composable
-fun SealDialogButtonVariant(
+fun ytclipDialogButtonVariant(
     modifier: Modifier = Modifier,
     shape: Shape = MiddleButtonShape,
     text: String,
@@ -190,8 +190,8 @@ fun SealDialogButtonVariant(
 @Preview(name = "light", uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Composable
 private fun ButtonVariantPreview() {
-    SealTheme {
-        SealDialogVariant(
+    ytclipTheme {
+        ytclipDialogVariant(
             onDismissRequest = {},
             modifier = Modifier,
             icon = {
@@ -208,15 +208,15 @@ private fun ButtonVariantPreview() {
                 )
             },
             buttons = {
-                SealDialogButtonVariant(
+                ytclipDialogButtonVariant(
                     text = stringResource(R.string.allow_always),
                     shape = TopButtonShape,
                 ) {}
-                SealDialogButtonVariant(
+                ytclipDialogButtonVariant(
                     text = stringResource(id = R.string.allow_once),
                     shape = MiddleButtonShape,
                 ) {}
-                SealDialogButtonVariant(
+                ytclipDialogButtonVariant(
                     text = stringResource(R.string.dont_allow),
                     shape = BottomButtonShape,
                 ) {}
@@ -235,7 +235,7 @@ val BottomButtonShape =
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SealDialogVariant(
+fun ytclipDialogVariant(
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
     buttons: @Composable (() -> Unit)? = null,

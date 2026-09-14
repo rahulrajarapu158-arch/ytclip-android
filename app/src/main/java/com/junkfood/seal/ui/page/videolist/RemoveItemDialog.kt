@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.junkfood.seal.R
 import com.junkfood.seal.database.objects.DownloadedVideoInfo
 import com.junkfood.seal.ui.component.CheckBoxItem
-import com.junkfood.seal.ui.component.SealDialog
+import com.junkfood.seal.ui.component.ytclipDialog
 
 @Composable
 fun RemoveItemDialog(
@@ -25,7 +25,7 @@ fun RemoveItemDialog(
     onRemoveConfirm: (Boolean) -> Unit = {},
     onDismissRequest: () -> Unit = {},
 ) {
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         title = { Text(text = stringResource(R.string.delete_info)) },
         icon = { Icon(Icons.Outlined.Delete, null) },

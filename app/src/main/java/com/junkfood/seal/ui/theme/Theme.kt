@@ -34,7 +34,7 @@ fun Color.harmonizeWithPrimary(): Color =
     this.harmonizeWith(other = MaterialTheme.colorScheme.primary)
 
 @Composable
-fun SealTheme(
+fun ytclipTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     isHighContrastModeEnabled: Boolean = false,
     content: @Composable () -> Unit,
@@ -94,7 +94,7 @@ fun SealTheme(
 }
 
 @Composable
-@Deprecated("Use SealTheme instead", replaceWith = ReplaceWith("SealTheme(content)"))
+@Deprecated("Use ytclipTheme instead", replaceWith = ReplaceWith("ytclipTheme(content)"))
 fun PreviewThemeLight(content: @Composable () -> Unit) {
-    SealTheme(darkTheme = false, content = content)
+    ytclipTheme(darkTheme = false, content = content)
 }

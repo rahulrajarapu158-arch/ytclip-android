@@ -31,7 +31,7 @@ import kotlinx.coroutines.delay
 
 /** @param contentDescription Text label of the `TextField` for the accessibility service */
 @Composable
-fun SealTextField(
+fun ytclipTextField(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
@@ -97,7 +97,7 @@ fun SealTextField(
 }
 
 @Composable
-fun SealAutoFocusTextField(
+fun ytclipAutoFocusTextField(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
@@ -175,7 +175,7 @@ fun SealAutoFocusTextField(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SealTextField(
+fun ytclipTextField(
     value: TextFieldValue,
     onValueChange: (TextFieldValue) -> Unit,
     modifier: Modifier = Modifier,

@@ -71,8 +71,8 @@ import com.junkfood.seal.ui.component.DialogSwitchItem
 import com.junkfood.seal.ui.component.DismissButton
 import com.junkfood.seal.ui.component.OutlinedButtonChip
 import com.junkfood.seal.ui.component.PreferenceSubtitle
-import com.junkfood.seal.ui.component.SealDialog
-import com.junkfood.seal.ui.component.SealTextField
+import com.junkfood.seal.ui.component.ytclipDialog
+import com.junkfood.seal.ui.component.ytclipTextField
 import com.junkfood.seal.ui.page.downloadv2.configure.PreferencesMock
 import com.junkfood.seal.util.AUDIO_CONVERSION_FORMAT
 import com.junkfood.seal.util.AUDIO_CONVERT
@@ -112,7 +112,7 @@ fun VideoResolutionSelectField(
     val videoResolutionText = PreferenceStrings.getVideoResolutionDesc(videoResolution)
 
     ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = { expanded = !expanded }) {
-        SealTextField(
+        ytclipTextField(
             modifier = modifier.fillMaxWidth().menuAnchor(MenuAnchorType.PrimaryNotEditable),
             value = videoResolutionText,
             onValueChange = {},
@@ -184,7 +184,7 @@ fun VideoQuickSettingsDialog(
     onSave: () -> Unit = {},
     onDismissRequest: () -> Unit = {},
 ) {
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         icon = { Icon(Icons.Outlined.VideoFile, null) },
         title = { Text(text = stringResource(id = R.string.edit_preset)) },
@@ -286,7 +286,7 @@ private fun AudioFormatSelectField(
 
     PreferenceSubtitle(text = stringResource(R.string.audio_format))
     ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = { expanded = !expanded }) {
-        SealTextField(
+        ytclipTextField(
             modifier = modifier.fillMaxWidth().menuAnchor(MenuAnchorType.PrimaryNotEditable),
             value = userSelectionText,
             onValueChange = {},
@@ -336,7 +336,7 @@ private fun AudioQualitySelectField(
 
     PreferenceSubtitle(text = stringResource(R.string.audio_quality))
     ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = { expanded = !expanded }) {
-        SealTextField(
+        ytclipTextField(
             enabled = enabled,
             modifier =
                 modifier
@@ -387,7 +387,7 @@ fun AudioQuickSettingsDialog(
     onSave: () -> Unit,
 ) {
     var editingPreset by remember { mutableStateOf(false) }
-    SealDialog(
+    ytclipDialog(
         modifier = modifier,
         onDismissRequest = onDismissRequest,
         icon = { Icon(Icons.Outlined.AudioFile, null) },
@@ -479,7 +479,7 @@ fun AudioConversionDialog(
     onConfirm: (Int) -> Unit = {},
 ) {
     var audioFormat by remember { mutableIntStateOf(audioFormat) }
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         dismissButton = {
             TextButton(onClick = onDismissRequest) { Text(stringResource(R.string.dismiss)) }
@@ -521,7 +521,7 @@ fun AudioConversionDialog(
 fun AudioConversionQuickSettingsDialog(onDismissRequest: () -> Unit, onConfirm: () -> Unit = {}) {
     var audioFormat by remember { mutableIntStateOf(PreferenceUtil.getAudioConvertFormat()) }
     var convertAudio by AUDIO_CONVERT.booleanState
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         dismissButton = { DismissButton { onDismissRequest() } },
         icon = { Icon(Icons.Outlined.Sync, null) },
@@ -569,7 +569,7 @@ fun VideoFormatDialog(
     onConfirm: (Int) -> Unit = {},
 ) {
     var preference by remember { mutableIntStateOf(videoFormatPreference) }
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         dismissButton = {
             TextButton(onClick = onDismissRequest) { Text(stringResource(R.string.dismiss)) }
@@ -610,7 +610,7 @@ fun VideoFormatDialog(
 @Composable
 fun AudioFormatDialog(onDismissRequest: () -> Unit) {
     var audioFormat by AUDIO_FORMAT.intState
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         dismissButton = {
             TextButton(onClick = onDismissRequest) { Text(stringResource(R.string.dismiss)) }
@@ -646,7 +646,7 @@ fun AudioFormatDialog(onDismissRequest: () -> Unit) {
 @Composable
 fun AudioQualityDialog(onDismissRequest: () -> Unit) {
     var audioQuality by AUDIO_QUALITY.intState
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         dismissButton = { DismissButton { onDismissRequest() } },
         icon = { Icon(Icons.Outlined.HighQuality, null) },
@@ -688,7 +688,7 @@ fun FormatSortingDialog(
     onConfirm: (String) -> Unit = {},
 ) {
     var sortingFields by remember(fields) { mutableStateOf(fields) }
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         dismissButton = { DismissButton { onDismissRequest() } },
         icon = { Icon(Icons.AutoMirrored.Outlined.Sort, null) },
@@ -771,7 +771,7 @@ fun VideoQualityDialog(
 ) {
     var videoResolution by remember { mutableIntStateOf(videoQuality) }
 
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         dismissButton = {
             TextButton(onClick = onDismissRequest) { Text(stringResource(R.string.dismiss)) }
@@ -843,7 +843,7 @@ private fun SubtitleLanguageDialogImpl(
 ) {
     var languages by remember(initialLanguages) { mutableStateOf(initialLanguages) }
     val uriHandler = LocalUriHandler.current
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         title = { Text(stringResource(id = R.string.subtitle_language)) },
         icon = { Icon(Icons.Outlined.Language, null) },
@@ -902,7 +902,7 @@ private fun SubtitleLanguageDialogImpl(
 @Composable
 fun SubtitleConversionDialog(onDismissRequest: () -> Unit) {
     var currentFormat by CONVERT_SUBTITLE.intState
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         confirmButton = {
             ConfirmButton {

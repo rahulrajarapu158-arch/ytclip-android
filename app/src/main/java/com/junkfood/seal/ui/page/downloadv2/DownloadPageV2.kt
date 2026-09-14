@@ -102,7 +102,7 @@ import com.junkfood.seal.ui.common.HapticFeedback.slightHapticFeedback
 import com.junkfood.seal.ui.common.LocalDarkTheme
 import com.junkfood.seal.ui.common.LocalFixedColorRoles
 import com.junkfood.seal.ui.common.LocalWindowWidthState
-import com.junkfood.seal.ui.component.SealModalBottomSheet
+import com.junkfood.seal.ui.component.ytclipModalBottomSheet
 import com.junkfood.seal.ui.component.SelectionGroupDefaults
 import com.junkfood.seal.ui.component.SelectionGroupItem
 import com.junkfood.seal.ui.component.SelectionGroupRow
@@ -115,7 +115,7 @@ import com.junkfood.seal.ui.page.downloadv2.configure.PlaylistSelectionPage
 import com.junkfood.seal.ui.page.downloadv2.configure.PreferencesMock
 import com.junkfood.seal.ui.svg.DynamicColorImageVectors
 import com.junkfood.seal.ui.svg.drawablevectors.download
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 import com.junkfood.seal.util.DownloadUtil
 import com.junkfood.seal.util.FileUtil
 import com.junkfood.seal.util.getErrorReport
@@ -514,7 +514,7 @@ fun DownloadPageImplV2(
     if (selectedTask != null) {
         val task = selectedTask!!
         val (downloadState, _, viewState) = taskDownloadStateMap[task] ?: return
-        SealModalBottomSheet(
+        ytclipModalBottomSheet(
             sheetState = sheetState,
             contentPadding = PaddingValues(),
             onDismissRequest = {
@@ -802,7 +802,7 @@ internal class DownloadPageV2Test {
     private fun Preview() {
 
         val downloader: DownloaderV2 = mockDownloader
-        SealTheme {
+        ytclipTheme {
             Column() {
                 DownloadPageImplV2(
                     taskDownloadStateMap = downloader.getTaskStateMap(),

@@ -108,9 +108,9 @@ android {
             if (keystorePropertiesFile.exists()) {
                 signingConfig = signingConfigs.getByName("githubPublish")
             }
-            applicationIdSuffix = ".debug"
-            versionNameSuffix = "-debug"
-            resValue("string", "app_name", "Seal Debug")
+            applicationIdSuffix = ""
+            versionNameSuffix = ""
+            resValue("string", "app_name", "ytclip")
         }
     }
 
@@ -139,7 +139,7 @@ android {
     applicationVariants.all {
         outputs.all {
             (this as com.android.build.gradle.internal.api.BaseVariantOutputImpl).outputFileName =
-                "Seal-${defaultConfig.versionName}-${name}.apk"
+                "ytclip-${defaultConfig.versionName}-${name}.apk"
         }
     }
 

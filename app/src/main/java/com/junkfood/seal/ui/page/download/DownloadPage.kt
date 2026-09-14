@@ -107,7 +107,7 @@ import com.junkfood.seal.ui.page.downloadv2.configure.DownloadDialogViewModel
 import com.junkfood.seal.ui.page.downloadv2.configure.DownloadDialogViewModel.Action
 import com.junkfood.seal.ui.page.downloadv2.configure.FormatPage
 import com.junkfood.seal.ui.theme.PreviewThemeLight
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 import com.junkfood.seal.util.CELLULAR_DOWNLOAD
 import com.junkfood.seal.util.CONFIGURE
 import com.junkfood.seal.util.CUSTOM_COMMAND
@@ -730,7 +730,7 @@ fun ErrorMessage(
 @Preview
 @Composable
 private fun ErrorPreview() {
-    SealTheme {
+    ytclipTheme {
         Surface {
             LazyColumn {
                 item {

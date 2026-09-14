@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SealModalBottomSheet(
+fun ytclipModalBottomSheet(
     modifier: Modifier = Modifier,
     sheetState: SheetState =
         with(LocalDensity.current) {

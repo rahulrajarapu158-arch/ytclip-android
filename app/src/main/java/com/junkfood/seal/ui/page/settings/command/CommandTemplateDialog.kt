@@ -52,8 +52,8 @@ import com.junkfood.seal.ui.component.ClearButton
 import com.junkfood.seal.ui.component.ConfirmButton
 import com.junkfood.seal.ui.component.LinkButton
 import com.junkfood.seal.ui.component.PasteFromClipBoardButton
-import com.junkfood.seal.ui.component.SealDialog
-import com.junkfood.seal.ui.component.SealTextField
+import com.junkfood.seal.ui.component.ytclipDialog
+import com.junkfood.seal.ui.component.ytclipTextField
 import com.junkfood.seal.ui.component.ShortcutChip
 import com.junkfood.seal.util.DatabaseUtil
 import kotlinx.coroutines.launch
@@ -165,7 +165,7 @@ fun OptionChipsDialog(onDismissRequest: () -> Unit = {}) {
             }
         }
     }
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         title = { Text(text = stringResource(id = R.string.edit_shortcuts)) },
         icon = { Icon(Icons.Outlined.Edit, null) },
@@ -195,7 +195,7 @@ fun OptionChipsDialog(onDismissRequest: () -> Unit = {}) {
                 val focusManager = LocalFocusManager.current
                 val softwareKeyboardController = LocalSoftwareKeyboardController.current
 
-                SealTextField(
+                ytclipTextField(
                     modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
                     value = text,
                     onValueChange = { text = it },

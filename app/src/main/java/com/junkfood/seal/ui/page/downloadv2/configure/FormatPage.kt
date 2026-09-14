@@ -84,15 +84,15 @@ import com.junkfood.seal.ui.component.FormatItem
 import com.junkfood.seal.ui.component.FormatSubtitle
 import com.junkfood.seal.ui.component.FormatVideoPreview
 import com.junkfood.seal.ui.component.PreferenceInfo
-import com.junkfood.seal.ui.component.SealDialog
-import com.junkfood.seal.ui.component.SealSearchBar
+import com.junkfood.seal.ui.component.ytclipDialog
+import com.junkfood.seal.ui.component.ytclipSearchBar
 import com.junkfood.seal.ui.component.SuggestedFormatItem
 import com.junkfood.seal.ui.component.TextButtonWithIcon
 import com.junkfood.seal.ui.component.VideoFilterChip
 import com.junkfood.seal.ui.page.download.VideoClipDialog
 import com.junkfood.seal.ui.page.download.VideoSelectionSlider
 import com.junkfood.seal.ui.page.settings.general.DialogCheckBoxItem
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 import com.junkfood.seal.ui.theme.generateLabelColor
 import com.junkfood.seal.util.EXTRACT_AUDIO
 import com.junkfood.seal.util.Format
@@ -270,7 +270,7 @@ fun FormatPagePreview() {
                 },
             duration = 180.0,
         )
-    SealTheme {
+    ytclipTheme {
         FormatPageImpl(
             videoInfo = videoInfo,
             isClippingAvailable = true,
@@ -878,7 +878,7 @@ private fun RenameDialog(
     onConfirm: (String) -> Unit,
 ) {
     var filename by remember { mutableStateOf(initialValue) }
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         confirmButton = {
             ConfirmButton {
@@ -977,7 +977,7 @@ private fun SubtitleSelectionDialog(
     val autoCaptionsFiltered =
         autoCaptions.filterWithSearchText(searchText).sortedWithSelection(selectedSubtitles)
 
-    SealDialog(
+    ytclipDialog(
         containerColor = MaterialTheme.colorScheme.surfaceContainerLowest,
         onDismissRequest = onDismissRequest,
         confirmButton = { ConfirmButton { onConfirm(selectedSubtitles, selectedAutoCaptions) } },
@@ -987,7 +987,7 @@ private fun SubtitleSelectionDialog(
         text = {
             Column {
                 if (autoCaptions.size + suggestedSubtitles.size > 5) {
-                    SealSearchBar(
+                    ytclipSearchBar(
                         text = searchText,
                         placeholderText = stringResource(R.string.search_in_subtitles),
                         modifier = Modifier.padding(horizontal = 16.dp),
@@ -1079,7 +1079,7 @@ private fun SubtitleSelectionDialogPreview() {
         put("ja", listOf(SubtitleFormat(ext = "ass", url = "", name = "Japanese")))
     }
 
-    SealTheme {
+    ytclipTheme {
         SubtitleSelectionDialog(
             suggestedSubtitles = subMap,
             autoCaptions = captionsMap,

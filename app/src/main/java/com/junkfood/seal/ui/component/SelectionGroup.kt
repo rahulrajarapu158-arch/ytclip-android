@@ -36,7 +36,7 @@ import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.junkfood.seal.ui.common.LocalFixedColorRoles
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 
 @Composable
 fun SelectionGroupRow(
@@ -188,7 +188,7 @@ data class SelectionGroupItemColors(
 @Preview
 @Composable
 private fun Preview() {
-    SealTheme {
+    ytclipTheme {
         Surface {
             var selected by remember { mutableIntStateOf(0) }
             val itemSet = setOf("All", "Downloaded", "Canceled", "Finished")

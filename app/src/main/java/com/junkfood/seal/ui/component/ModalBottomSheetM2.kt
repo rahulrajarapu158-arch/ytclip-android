@@ -82,7 +82,7 @@ private fun SheetTest() {
         }
     }
 
-    SealModalBottomSheetM2(sheetState = sheetState) {
+    ytclipModalBottomSheetM2(sheetState = sheetState) {
         Column {
             Button(onClick = { scope.launch { sheetState.hide() } }) { Text("sheetState.hide()") }
 
@@ -92,7 +92,7 @@ private fun SheetTest() {
 }
 
 @Composable
-fun SealModalBottomSheetM2(
+fun ytclipModalBottomSheetM2(
     modifier: Modifier = Modifier,
     sheetState: ModalBottomSheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden),
     contentPadding: PaddingValues = PaddingValues(horizontal = 28.dp),
@@ -153,7 +153,7 @@ fun SealModalBottomSheetM2(
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun SealModalBottomSheetM2Variant(
+fun ytclipModalBottomSheetM2Variant(
     modifier: Modifier = Modifier,
     sheetState: ModalBottomSheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden),
     sheetGesturesEnabled: Boolean = true,

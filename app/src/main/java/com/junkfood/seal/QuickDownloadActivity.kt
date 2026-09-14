@@ -27,7 +27,7 @@ import com.junkfood.seal.ui.page.downloadv2.configure.DownloadDialogViewModel.Ac
 import com.junkfood.seal.ui.page.downloadv2.configure.DownloadDialogViewModel.SelectionState
 import com.junkfood.seal.ui.page.downloadv2.configure.FormatPage
 import com.junkfood.seal.ui.page.downloadv2.configure.PlaylistSelectionPage
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 import com.junkfood.seal.util.DownloadUtil
 import com.junkfood.seal.util.PreferenceUtil
 import com.junkfood.seal.util.matchUrlFromSharedText
@@ -97,7 +97,7 @@ class QuickDownloadActivity : ComponentActivity() {
 
         setContent {
             SettingsProvider(calculateWindowSizeClass(this).widthSizeClass) {
-                SealTheme(
+                ytclipTheme(
                     darkTheme = LocalDarkTheme.current.isDarkTheme(),
                     isHighContrastModeEnabled = LocalDarkTheme.current.isHighContrastModeEnabled,
                 ) {

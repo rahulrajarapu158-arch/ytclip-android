@@ -48,8 +48,8 @@ import androidx.core.text.isDigitsOnly
 import com.junkfood.seal.R
 import com.junkfood.seal.ui.component.ConfirmButton
 import com.junkfood.seal.ui.component.DismissButton
-import com.junkfood.seal.ui.component.SealDialog
-import com.junkfood.seal.ui.component.SealTextField
+import com.junkfood.seal.ui.component.ytclipDialog
+import com.junkfood.seal.ui.component.ytclipTextField
 import com.junkfood.seal.ui.component.TextButtonWithIcon
 import com.junkfood.seal.util.isNumberInRange
 import com.junkfood.seal.util.toDurationText
@@ -220,7 +220,7 @@ fun VideoClipDialog(
         } else error = true
     }
 
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         title = { Text(stringResource(id = R.string.clip_video)) },
         icon = { Icon(Icons.Outlined.ContentCut, null) },
@@ -234,7 +234,7 @@ fun VideoClipDialog(
                 ) {
                     Column(modifier = Modifier.weight(1f).padding(end = 6.dp)) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            SealTextField(
+                            ytclipTextField(
                                 modifier =
                                     Modifier.weight(1f).semantics {
                                         contentDescription = start + minute
@@ -254,7 +254,7 @@ fun VideoClipDialog(
                                 text = ":",
                                 style = MaterialTheme.typography.labelLarge,
                             )
-                            SealTextField(
+                            ytclipTextField(
                                 modifier =
                                     Modifier.weight(1f).semantics {
                                         contentDescription = start + second
@@ -279,7 +279,7 @@ fun VideoClipDialog(
                         modifier = Modifier.weight(1f).padding(start = 6.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        SealTextField(
+                        ytclipTextField(
                             modifier =
                                 Modifier.weight(1f).semantics { contentDescription = end + minute },
                             value = toMin,
@@ -297,7 +297,7 @@ fun VideoClipDialog(
                             text = ":",
                             style = MaterialTheme.typography.labelLarge,
                         )
-                        SealTextField(
+                        ytclipTextField(
                             modifier =
                                 Modifier.weight(1f).semantics { contentDescription = end + second },
                             value = toSec,

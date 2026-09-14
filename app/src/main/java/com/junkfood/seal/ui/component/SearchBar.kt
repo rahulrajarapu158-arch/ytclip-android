@@ -26,10 +26,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.junkfood.seal.R
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 
 @Composable
-fun SealSearchBar(
+fun ytclipSearchBar(
     modifier: Modifier = Modifier,
     text: String,
     placeholderText: String,
@@ -49,7 +49,7 @@ fun SealSearchBar(
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
             )
-            SealAutoFocusTextField(
+            ytclipAutoFocusTextField(
                 value = text,
                 onValueChange = onValueChange,
                 placeholder = { Text(text = placeholderText) },
@@ -81,9 +81,9 @@ fun SealSearchBar(
 @Composable
 private fun SearchBarPreview() {
     var text by remember { mutableStateOf("") }
-    SealTheme {
+    ytclipTheme {
         Surface {
-            SealSearchBar(
+            ytclipSearchBar(
                 text = text,
                 placeholderText = stringResource(R.string.search_in_downloads),
             ) {

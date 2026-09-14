@@ -9,7 +9,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.junkfood.seal.R
 import com.junkfood.seal.ui.component.DialogSingleChoiceItem
-import com.junkfood.seal.ui.component.SealDialog
+import com.junkfood.seal.ui.component.ytclipDialog
 import com.junkfood.seal.util.NONE
 import com.junkfood.seal.util.USE_PREVIOUS_SELECTION
 
@@ -20,7 +20,7 @@ fun DownloadTypeCustomizationDialog(
     selectedItem: Int,
     onSelect: (Int) -> Unit,
 ) {
-    SealDialog(
+    ytclipDialog(
         modifier = modifier,
         onDismissRequest = onDismissRequest,
         confirmButton = null,

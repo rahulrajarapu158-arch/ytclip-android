@@ -54,7 +54,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.junkfood.seal.R
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 import com.junkfood.seal.util.Format
 import com.junkfood.seal.util.VideoInfo
 import com.junkfood.seal.util.connectWithBlank
@@ -183,7 +183,7 @@ fun FormatVideoPreview(
 @Composable
 @Preview
 fun VideoInfoPreview() {
-    SealTheme {
+    ytclipTheme {
         Surface {
             Column {
                 FormatVideoPreview(

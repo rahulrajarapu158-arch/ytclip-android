@@ -96,8 +96,8 @@ import com.junkfood.seal.ui.common.motion.materialSharedAxisX
 import com.junkfood.seal.ui.component.ButtonChip
 import com.junkfood.seal.ui.component.DrawerSheetSubtitle
 import com.junkfood.seal.ui.component.OutlinedButtonWithIcon
-import com.junkfood.seal.ui.component.SealModalBottomSheet
-import com.junkfood.seal.ui.component.SealModalBottomSheetM2Variant
+import com.junkfood.seal.ui.component.ytclipModalBottomSheet
+import com.junkfood.seal.ui.component.ytclipModalBottomSheetM2Variant
 import com.junkfood.seal.ui.component.SingleChoiceChip
 import com.junkfood.seal.ui.component.SingleChoiceSegmentedButton
 import com.junkfood.seal.ui.component.VideoFilterChip
@@ -115,7 +115,7 @@ import com.junkfood.seal.ui.page.settings.command.CommandTemplateDialog
 import com.junkfood.seal.ui.page.settings.format.AudioQuickSettingsDialog
 import com.junkfood.seal.ui.page.settings.format.VideoQuickSettingsDialog
 import com.junkfood.seal.ui.page.settings.network.CookiesQuickSettingsDialog
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 import com.junkfood.seal.util.AUDIO_CONVERSION_FORMAT
 import com.junkfood.seal.util.AUDIO_CONVERT
 import com.junkfood.seal.util.AUDIO_FORMAT
@@ -199,7 +199,7 @@ fun DownloadDialog(
     var showVideoPresetDialog by remember { mutableStateOf(false) }
     var showAudioPresetDialog by remember { mutableStateOf(false) }
 
-    SealModalBottomSheet(
+    ytclipModalBottomSheet(
         sheetState = sheetState,
         contentPadding = PaddingValues(),
         onDismissRequest = { onActionPost(Action.HideSheet) },
@@ -423,7 +423,7 @@ private fun DownloadDialogContent(
 @Preview
 @Composable
 private fun ErrorPreview() {
-    SealModalBottomSheet(
+    ytclipModalBottomSheet(
         onDismissRequest = {},
         sheetState =
             with(LocalDensity.current) {
@@ -467,7 +467,7 @@ fun FormatPage(
     val scope = rememberCoroutineScope()
     BackHandler { scope.launch { sheetState.hide() }.invokeOnCompletion { onDismissRequest() } }
 
-    SealModalBottomSheetM2Variant(sheetState = sheetState, sheetGesturesEnabled = false) {
+    ytclipModalBottomSheetM2Variant(sheetState = sheetState, sheetGesturesEnabled = false) {
         FormatPage(
             modifier = modifier,
             videoInfo = state.info,
@@ -483,8 +483,8 @@ fun FormatPage(
 @Preview(name = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO)*/
 @Composable
 private fun ConfigurePagePreview() {
-    SealTheme() {
-        SealModalBottomSheet(
+    ytclipTheme() {
+        ytclipModalBottomSheet(
             sheetState =
                 with(LocalDensity.current) {
                     SheetState(

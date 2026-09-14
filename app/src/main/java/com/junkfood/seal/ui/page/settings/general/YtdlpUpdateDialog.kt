@@ -41,7 +41,7 @@ import com.junkfood.seal.ui.common.booleanState
 import com.junkfood.seal.ui.common.intState
 import com.junkfood.seal.ui.component.ConfirmButton
 import com.junkfood.seal.ui.component.DismissButton
-import com.junkfood.seal.ui.component.SealDialog
+import com.junkfood.seal.ui.component.ytclipDialog
 import com.junkfood.seal.util.PreferenceStrings.getUpdateIntervalText
 import com.junkfood.seal.util.PreferenceUtil.getLong
 import com.junkfood.seal.util.PreferenceUtil.updateBoolean
@@ -101,7 +101,7 @@ fun YtdlpUpdateChannelDialog(modifier: Modifier = Modifier, onDismissRequest: ()
     var ytdlpAutoUpdate by YT_DLP_AUTO_UPDATE.booleanState
     var updateInterval by remember { mutableLongStateOf(YT_DLP_UPDATE_INTERVAL.getLong()) }
 
-    SealDialog(
+    ytclipDialog(
         modifier = modifier,
         onDismissRequest = onDismissRequest,
         confirmButton = {

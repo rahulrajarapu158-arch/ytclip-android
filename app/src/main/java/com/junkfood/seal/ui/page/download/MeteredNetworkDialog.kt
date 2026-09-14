@@ -10,8 +10,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.junkfood.seal.R
 import com.junkfood.seal.ui.component.BottomButtonShape
 import com.junkfood.seal.ui.component.MiddleButtonShape
-import com.junkfood.seal.ui.component.SealDialogButtonVariant
-import com.junkfood.seal.ui.component.SealDialogVariant
+import com.junkfood.seal.ui.component.ytclipDialogButtonVariant
+import com.junkfood.seal.ui.component.ytclipDialogVariant
 import com.junkfood.seal.ui.component.TopButtonShape
 
 @Composable
@@ -21,7 +21,7 @@ fun MeteredNetworkDialog(
     onAllowOnceConfirm: () -> Unit = {},
     onAllowAlwaysConfirm: () -> Unit = {},
 ) {
-    SealDialogVariant(
+    ytclipDialogVariant(
         onDismissRequest = onDismissRequest,
         icon = {
             Icon(
@@ -37,19 +37,19 @@ fun MeteredNetworkDialog(
         //        },
         title = { Text(text = stringResource(id = R.string.download_with_cellular_request)) },
         buttons = {
-            SealDialogButtonVariant(
+            ytclipDialogButtonVariant(
                 text = stringResource(id = R.string.allow_always),
                 shape = TopButtonShape,
             ) {
                 onAllowAlwaysConfirm()
             }
-            SealDialogButtonVariant(
+            ytclipDialogButtonVariant(
                 text = stringResource(id = R.string.allow_once),
                 shape = MiddleButtonShape,
             ) {
                 onAllowOnceConfirm()
             }
-            SealDialogButtonVariant(
+            ytclipDialogButtonVariant(
                 text = stringResource(id = R.string.dont_allow),
                 shape = BottomButtonShape,
             ) {

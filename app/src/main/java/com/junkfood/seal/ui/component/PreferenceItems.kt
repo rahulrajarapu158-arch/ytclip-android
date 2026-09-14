@@ -58,7 +58,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.junkfood.seal.R
 import com.junkfood.seal.ui.theme.FixedAccentColors
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 import com.junkfood.seal.ui.theme.applyOpacity
 import com.junkfood.seal.ui.theme.harmonizeWithPrimary
 import com.kyant.monet.LocalTonalPalettes
@@ -153,7 +153,7 @@ fun PreferenceItem(
 @Composable
 @Preview
 fun PreferenceItemPreview() {
-    SealTheme {
+    ytclipTheme {
         Surface {
             Column {
                 PreferenceSubtitle(text = "Preview")
@@ -298,7 +298,7 @@ internal fun PreferenceItemDescription(
 @Preview
 fun PreferenceSwitchPreview() {
     var b by remember { mutableStateOf(false) }
-    SealTheme {
+    ytclipTheme {
         PreferenceSwitch(
             title = "PreferenceSwitch",
             description = "Supporting text",
@@ -628,7 +628,7 @@ fun PreferencesHintCard(
 @Preview(name = "Night", uiMode = Configuration.UI_MODE_NIGHT_YES)
 private fun PreferenceSwitchWithContainerPreview() {
     var isChecked by remember { mutableStateOf(false) }
-    SealTheme {
+    ytclipTheme {
         PreferenceSwitchWithContainer(
             title = "Title ".repeat(2),
             isChecked = isChecked,

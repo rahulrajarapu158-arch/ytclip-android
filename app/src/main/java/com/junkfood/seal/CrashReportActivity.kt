@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 import com.junkfood.seal.ui.common.LocalDarkTheme
 import com.junkfood.seal.ui.common.SettingsProvider
 import com.junkfood.seal.ui.component.FilledButtonWithIcon
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 
 class CrashReportActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +38,7 @@ class CrashReportActivity : ComponentActivity() {
 
         setContent {
             SettingsProvider(WindowWidthSizeClass.Compact) {
-                SealTheme(
+                ytclipTheme(
                     darkTheme = LocalDarkTheme.current.isDarkTheme(),
                     isHighContrastModeEnabled = LocalDarkTheme.current.isHighContrastModeEnabled,
                 ) {

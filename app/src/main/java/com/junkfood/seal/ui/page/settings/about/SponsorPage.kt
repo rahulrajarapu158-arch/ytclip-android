@@ -66,11 +66,11 @@ import com.junkfood.seal.R
 import com.junkfood.seal.ui.common.AsyncImageImpl
 import com.junkfood.seal.ui.component.BackButton
 import com.junkfood.seal.ui.component.PreferenceSubtitle
-import com.junkfood.seal.ui.component.SealModalBottomSheet
+import com.junkfood.seal.ui.component.ytclipModalBottomSheet
 import com.junkfood.seal.ui.component.SponsorItem
 import com.junkfood.seal.ui.component.gitHubAvatar
 import com.junkfood.seal.ui.component.gitHubProfile
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 import com.junkfood.seal.util.PreferenceUtil.updateInt
 import com.junkfood.seal.util.SHOW_SPONSOR_MSG
 import com.junkfood.seal.util.SocialAccount
@@ -329,7 +329,7 @@ fun SponsorDialog(sponsorShip: SponsorShip, sheetState: SheetState, onDismissReq
             null
         }
 
-    SealModalBottomSheet(
+    ytclipModalBottomSheet(
         onDismissRequest = onDismissRequest,
         sheetState = sheetState,
         contentPadding = PaddingValues(0.dp),
@@ -455,7 +455,7 @@ private fun SponsorDialogContentPreview() {
             tier = Tier(10),
         )
 
-    SealTheme {
+    ytclipTheme {
         Surface {
             SponsorDialogContent(
                 userLogin = sponsorShip.sponsorEntity.login,

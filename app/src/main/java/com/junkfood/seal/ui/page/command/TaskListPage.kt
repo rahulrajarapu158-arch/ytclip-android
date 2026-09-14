@@ -71,8 +71,8 @@ import com.junkfood.seal.ui.component.FilledButtonWithIcon
 import com.junkfood.seal.ui.component.OutlinedButtonChip
 import com.junkfood.seal.ui.component.OutlinedButtonWithIcon
 import com.junkfood.seal.ui.component.PasteFromClipBoardButton
-import com.junkfood.seal.ui.component.SealDialog
-import com.junkfood.seal.ui.component.SealModalBottomSheetM2
+import com.junkfood.seal.ui.component.ytclipDialog
+import com.junkfood.seal.ui.component.ytclipModalBottomSheetM2
 import com.junkfood.seal.ui.component.TaskStatus
 import com.junkfood.seal.ui.page.settings.command.CommandTemplateDialog
 import com.junkfood.seal.util.PreferenceUtil
@@ -164,7 +164,7 @@ fun TaskListPage(onNavigateBack: () -> Unit, onNavigateToDetail: (Int) -> Unit) 
     BackHandler(showBottomSheet) { onDismissRequest() }
 
     if (showBottomSheet)
-        SealModalBottomSheetM2(
+        ytclipModalBottomSheetM2(
             sheetState = sheetState,
             sheetContent = {
                 val clipboardManager = LocalClipboardManager.current
@@ -337,7 +337,7 @@ fun TemplatePickerDialog(onDismissRequest: () -> Unit = {}) {
                     .run { if (this == -1) 0 else this }
         )
 
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         confirmButton = { DismissButton(onClick = onDismissRequest) },
         title = { Text(text = stringResource(id = R.string.template_selection)) },

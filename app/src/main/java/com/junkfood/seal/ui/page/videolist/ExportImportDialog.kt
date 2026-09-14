@@ -28,9 +28,9 @@ import com.junkfood.seal.R
 import com.junkfood.seal.database.backup.BackupUtil.BackupDestination
 import com.junkfood.seal.database.backup.BackupUtil.BackupType
 import com.junkfood.seal.ui.component.DialogSubtitle
-import com.junkfood.seal.ui.component.SealDialog
+import com.junkfood.seal.ui.component.ytclipDialog
 import com.junkfood.seal.ui.component.SingleSelectChip
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 
 @Composable
 fun ExportDialog(
@@ -41,7 +41,7 @@ fun ExportDialog(
 ) {
     var type by remember { mutableStateOf(BackupType.DownloadHistory) }
     var destination by remember { mutableStateOf(BackupDestination.File) }
-    SealDialog(
+    ytclipDialog(
         containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
         modifier = modifier,
         onDismissRequest = onDismissRequest,
@@ -126,7 +126,7 @@ fun ImportDialog(
 ) {
     var destination by remember { mutableStateOf(BackupDestination.File) }
 
-    SealDialog(
+    ytclipDialog(
         containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
         modifier = modifier,
         onDismissRequest = onDismissRequest,
@@ -195,11 +195,11 @@ fun ImportDialog(
 @Preview(locale = "ja")
 @Composable
 private fun PreviewExport() {
-    SealTheme { ExportDialog() { _, _ -> } }
+    ytclipTheme { ExportDialog() { _, _ -> } }
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, name = "Dark")
 @Composable
 private fun PreviewImport() {
-    SealTheme { ImportDialog() { _ -> } }
+    ytclipTheme { ImportDialog() { _ -> } }
 }

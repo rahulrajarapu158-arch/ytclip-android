@@ -72,7 +72,7 @@ import com.junkfood.seal.ui.component.ClearButton
 import com.junkfood.seal.ui.component.FilledButtonWithIcon
 import com.junkfood.seal.ui.component.OutlinedButtonWithIcon
 import com.junkfood.seal.ui.component.OutlinedDismissButton
-import com.junkfood.seal.ui.component.SealDialog
+import com.junkfood.seal.ui.component.ytclipDialog
 import com.junkfood.seal.ui.page.downloadv2.configure.DownloadDialogViewModel.Action
 import com.junkfood.seal.ui.theme.ErrorTonalPalettes
 import com.junkfood.seal.util.findURLsFromString
@@ -291,7 +291,7 @@ private fun URLSelectionDialog(
             mutableStateListOf<Int>().apply { addAll(urlListFromClipboard.indices) }
         }
 
-    SealDialog(
+    ytclipDialog(
         modifier = modifier,
         onDismissRequest = onDismissRequest,
         title = { Text(stringResource(R.string.select_multiple_link, urlListFromClipboard.size)) },
@@ -465,7 +465,7 @@ private fun SavedUrlDialogImpl(
     var selectedUrl: String? by remember(urls.size) { mutableStateOf(null) }
     val hapticFeedback = LocalHapticFeedback.current
 
-    SealDialog(
+    ytclipDialog(
         modifier = modifier,
         icon = { Icon(Icons.Outlined.Link, contentDescription = null) },
         title = { Text(stringResource(R.string.saved_urls)) },

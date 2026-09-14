@@ -49,7 +49,7 @@ import com.junkfood.seal.ui.component.PreferenceSingleChoiceItem
 import com.junkfood.seal.ui.component.PreferenceSubtitle
 import com.junkfood.seal.ui.component.PreferencesHintCard
 import com.junkfood.seal.ui.page.settings.about.weblate
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 import com.junkfood.seal.util.LocaleLanguageCodeMap
 import com.junkfood.seal.util.PreferenceUtil
 import com.junkfood.seal.util.setLanguage
@@ -261,7 +261,7 @@ private fun LanguagePageImpl(
 private fun LanguagePagePreview() {
     var language by remember { mutableStateOf(Locale.JAPANESE) }
     val map = setOf(Locale.forLanguageTag("en-US"))
-    SealTheme {
+    ytclipTheme {
         LanguagePageImpl(
             suggestedLocales = map,
             otherLocales = map + Locale.forLanguageTag("ja-JP"),

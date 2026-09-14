@@ -48,8 +48,8 @@ import com.junkfood.seal.ui.common.HapticFeedback.slightHapticFeedback
 import com.junkfood.seal.ui.component.FilledTonalButtonWithIcon
 import com.junkfood.seal.ui.component.LongTapTextButton
 import com.junkfood.seal.ui.component.OutlinedButtonWithIcon
-import com.junkfood.seal.ui.component.SealModalBottomSheetM2
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.component.ytclipModalBottomSheetM2
+import com.junkfood.seal.ui.theme.ytclipTheme
 import com.junkfood.seal.util.FileUtil
 import com.junkfood.seal.util.ToastUtil
 
@@ -114,7 +114,7 @@ fun VideoDetailDrawer(
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun DrawerPreview() {
-    SealTheme {
+    ytclipTheme {
         VideoDetailDrawerImpl(
             sheetState =
                 ModalBottomSheetState(
@@ -143,7 +143,7 @@ fun VideoDetailDrawerImpl(
 ) {
     val clipboardManager = LocalClipboardManager.current
     val context = LocalContext.current
-    SealModalBottomSheetM2(
+    ytclipModalBottomSheetM2(
         sheetState = sheetState,
         contentPadding = PaddingValues(horizontal = 20.dp),
         sheetContent = {

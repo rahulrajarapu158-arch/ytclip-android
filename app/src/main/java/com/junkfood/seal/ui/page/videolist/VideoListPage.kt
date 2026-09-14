@@ -94,8 +94,8 @@ import com.junkfood.seal.ui.component.CheckBoxItem
 import com.junkfood.seal.ui.component.ConfirmButton
 import com.junkfood.seal.ui.component.DismissButton
 import com.junkfood.seal.ui.component.MediaListItem
-import com.junkfood.seal.ui.component.SealDialog
-import com.junkfood.seal.ui.component.SealSearchBar
+import com.junkfood.seal.ui.component.ytclipDialog
+import com.junkfood.seal.ui.component.ytclipSearchBar
 import com.junkfood.seal.ui.component.VideoFilterChip
 import com.junkfood.seal.ui.svg.DynamicColorImageVectors
 import com.junkfood.seal.ui.svg.drawablevectors.videoSteaming
@@ -451,7 +451,7 @@ fun VideoListPage(viewModel: VideoListViewModel = koinViewModel(), onNavigateBac
                 item {
                     Column {
                         AnimatedVisibility(visible = viewState.isSearching) {
-                            SealSearchBar(
+                            ytclipSearchBar(
                                 modifier =
                                     Modifier.padding(horizontal = 12.dp).padding(vertical = 8.dp),
                                 text = viewState.searchText,
@@ -543,7 +543,7 @@ fun VideoListPage(viewModel: VideoListViewModel = koinViewModel(), onNavigateBac
     }
 
     if (showRemoveMultipleItemsDialog) {
-        SealDialog(
+        ytclipDialog(
             onDismissRequest = { showRemoveMultipleItemsDialog = false },
             icon = { Icon(Icons.Outlined.DeleteSweep, null) },
             title = { Text(stringResource(R.string.delete_info)) },

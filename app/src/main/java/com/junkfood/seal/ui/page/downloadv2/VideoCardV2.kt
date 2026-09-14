@@ -74,7 +74,7 @@ import com.junkfood.seal.ui.common.LocalDarkTheme
 import com.junkfood.seal.ui.common.LocalFixedColorRoles
 import com.junkfood.seal.ui.common.motion.materialSharedAxisY
 import com.junkfood.seal.ui.component.GreenTonalPalettes
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 import com.junkfood.seal.util.toDurationText
 import com.junkfood.seal.util.toFileSizeText
 import kotlinx.coroutines.Job
@@ -181,7 +181,7 @@ fun VideoListItem(
 @Composable
 @Preview(name = "Dark Mode", uiMode = Configuration.UI_MODE_NIGHT_YES)
 private fun VideoListItemPreview() {
-    SealTheme {
+    ytclipTheme {
         val fakeStateList =
             listOf(
                 Running(Job(), "", 0.58f),
@@ -269,7 +269,7 @@ fun VideoCardV2(
 @Preview
 @Preview(name = "Dark Mode", uiMode = Configuration.UI_MODE_NIGHT_YES)
 fun VideoCardV2Preview() {
-    SealTheme {
+    ytclipTheme {
         val downloadState = Error(throwable = Throwable(), action = RestartableAction.Download)
         VideoCardV2(
             thumbnailModel = R.drawable.sample3,

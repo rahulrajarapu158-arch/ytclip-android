@@ -90,7 +90,7 @@ import com.junkfood.seal.ui.component.PreferenceSubtitle
 import com.junkfood.seal.ui.component.PreferenceSwitch
 import com.junkfood.seal.ui.component.PreferenceSwitchWithDivider
 import com.junkfood.seal.ui.component.PreferencesHintCard
-import com.junkfood.seal.ui.component.SealDialog
+import com.junkfood.seal.ui.component.ytclipDialog
 import com.junkfood.seal.util.COMMAND_DIRECTORY
 import com.junkfood.seal.util.CUSTOM_COMMAND
 import com.junkfood.seal.util.CUSTOM_OUTPUT_TEMPLATE
@@ -524,7 +524,7 @@ fun OutputTemplateDialog(
 
     var error by remember { mutableIntStateOf(0) }
 
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         confirmButton = {
             ConfirmButton(enabled = error == 0) {

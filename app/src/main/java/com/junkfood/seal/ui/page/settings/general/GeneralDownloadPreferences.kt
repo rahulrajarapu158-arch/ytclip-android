@@ -79,7 +79,7 @@ import com.junkfood.seal.ui.component.PreferenceItem
 import com.junkfood.seal.ui.component.PreferenceSubtitle
 import com.junkfood.seal.ui.component.PreferenceSwitch
 import com.junkfood.seal.ui.component.PreferenceSwitchWithDivider
-import com.junkfood.seal.ui.component.SealDialog
+import com.junkfood.seal.ui.component.ytclipDialog
 import com.junkfood.seal.ui.page.download.NotificationPermissionDialog
 import com.junkfood.seal.util.CONFIGURE
 import com.junkfood.seal.util.CUSTOM_COMMAND
@@ -505,7 +505,7 @@ fun DownloadArchiveDialog(
 ) {
     var editContent by remember { mutableStateOf(archiveFileContent) }
 
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         confirmButton = {
             ConfirmButton(text = stringResource(id = R.string.save)) {

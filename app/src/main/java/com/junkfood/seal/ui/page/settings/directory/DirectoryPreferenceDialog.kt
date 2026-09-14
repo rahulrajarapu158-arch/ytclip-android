@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.junkfood.seal.R
 import com.junkfood.seal.ui.component.ConfirmButton
 import com.junkfood.seal.ui.component.DismissButton
-import com.junkfood.seal.ui.component.SealDialog
+import com.junkfood.seal.ui.component.ytclipDialog
 import com.junkfood.seal.ui.page.settings.general.DialogCheckBoxItem
 
 @Composable
@@ -34,7 +34,7 @@ fun DirectoryPreferenceDialog(
     var website by remember { mutableStateOf(isWebsiteSelected) }
     var playlistTitle by remember { mutableStateOf(isPlaylistTitleSelected) }
 
-    SealDialog(
+    ytclipDialog(
         onDismissRequest = onDismissRequest,
         confirmButton = {
             ConfirmButton {

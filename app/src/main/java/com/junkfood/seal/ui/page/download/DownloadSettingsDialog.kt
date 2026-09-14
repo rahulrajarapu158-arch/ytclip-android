@@ -64,8 +64,8 @@ import com.junkfood.seal.ui.component.DismissButton
 import com.junkfood.seal.ui.component.DrawerSheetSubtitle
 import com.junkfood.seal.ui.component.FilledButtonWithIcon
 import com.junkfood.seal.ui.component.OutlinedButtonWithIcon
-import com.junkfood.seal.ui.component.SealModalBottomSheet
-import com.junkfood.seal.ui.component.SealModalBottomSheetM2
+import com.junkfood.seal.ui.component.ytclipModalBottomSheet
+import com.junkfood.seal.ui.component.ytclipModalBottomSheetM2
 import com.junkfood.seal.ui.component.SingleChoiceChip
 import com.junkfood.seal.ui.component.VideoFilterChip
 import com.junkfood.seal.ui.page.command.TemplatePickerDialog
@@ -503,7 +503,7 @@ fun DownloadSettingDialog(
                     }
                 }
 
-                SealModalBottomSheetM2(
+                ytclipModalBottomSheetM2(
                     sheetState = sheetState,
                     contentPadding = PaddingValues(horizontal = 20.dp),
                     sheetContent = {
@@ -516,7 +516,7 @@ fun DownloadSettingDialog(
                     scope.launch { sheetState.hide() }.invokeOnCompletion { onDismissRequest() }
                 }
 
-                SealModalBottomSheet(
+                ytclipModalBottomSheet(
                     sheetState = sheetState,
                     contentPadding = PaddingValues(horizontal = 20.dp),
                     onDismissRequest = onDismissRequest,

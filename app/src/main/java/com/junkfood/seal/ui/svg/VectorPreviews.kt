@@ -12,13 +12,13 @@ import com.junkfood.seal.ui.svg.drawablevectors.coder
 import com.junkfood.seal.ui.svg.drawablevectors.download
 import com.junkfood.seal.ui.svg.drawablevectors.videoFiles
 import com.junkfood.seal.ui.svg.drawablevectors.videoSteaming
-import com.junkfood.seal.ui.theme.SealTheme
+import com.junkfood.seal.ui.theme.ytclipTheme
 
 @Preview(name = "Light", uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Preview(name = "Night", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun Download() {
-    SealTheme {
+    ytclipTheme {
         Surface {
             Column {
                 Image(
